@@ -1,1 +1,2018 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viretec - Innovamos para mejorar el mundo</title>
+    <!-- Preconexiones para recursos externos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Fuentes -->
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Animaciones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --azul-viretec: #00ADEE;
+            --azul-profundo: #0077A2;
+            --azul-claro: #7FDBFF;
+            --verde-sustentable: #5CB85C;
+            --blanco: #ffffff;
+            --negro: #333333;
+            --gris-claro: #f5f5f5;
+            --gris-medio: #e0e0e0;
+            --sombra: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transicion: all 0.3s ease;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--negro);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Ubuntu', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transicion);
+        }
+
+        a:focus {
+            outline: 2px solid var(--azul-viretec);
+            outline-offset: 2px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 5px;
+            font-family: 'Ubuntu', sans-serif;
+            font-weight: 500;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transicion);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            opacity: 0;
+            border-radius: 100%;
+            transform: translate(-50%, -50%) scale(1);
+            transition: transform 0.5s, opacity 0.5s;
+        }
+
+        .btn:active::after {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(20);
+            transition: transform 0.2s, opacity 0.1s;
+        }
+
+        .btn-primary {
+            background-color: var(--verde-sustentable);
+            color: var(--blanco);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #4a9d4a;
+            transform: translateY(-2px);
+            box-shadow: var(--sombra);
+        }
+
+        .btn-primary:focus {
+            outline: 2px solid #3a7d3a;
+            outline-offset: 2px;
+        }
+
+        .btn-secondary {
+            background-color: var(--azul-viretec);
+            color: var(--blanco);
+            border: none;
+        }
+
+        .btn-secondary:hover {
+            background-color: #0099d5;
+            transform: translateY(-2px);
+            box-shadow: var(--sombra);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--azul-viretec);
+            border: 2px solid var(--azul-viretec);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--azul-viretec);
+            color: var(--blanco);
+            transform: translateY(-2px);
+            box-shadow: var(--sombra);
+        }
+
+        /* Header y Navegación */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: var(--blanco);
+            box-shadow: var(--sombra);
+            transition: var(--transicion);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            height: 50px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-left: 30px;
+            position: relative;
+        }
+
+        .nav-link {
+            font-family: 'Ubuntu', sans-serif;
+            font-weight: 500;
+            color: var(--azul-profundo);
+            transition: var(--transicion);
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--azul-viretec);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--azul-viretec);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link:focus::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            margin-left: 20px;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            width: 30px;
+            height: 20px;
+            position: relative;
+            z-index: 100;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: var(--azul-profundo);
+            position: absolute;
+            left: 0;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger span:nth-child(1) {
+            top: 0;
+        }
+
+        .hamburger span:nth-child(2) {
+            top: 9px;
+        }
+
+        .hamburger span:nth-child(3) {
+            bottom: 0;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Sección Hero */
+        .hero {
+            padding-top: 120px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--azul-profundo) 0%, var(--azul-viretec) 100%);
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: var(--blanco);
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeInUp 1s forwards 0.5s;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeInUp 1s forwards 0.8s;
+        }
+
+        .hero-cta {
+            opacity: 0;
+            animation: fadeInUp 1s forwards 1.1s;
+        }
+
+        .hero-rocket {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            transition: var(--transicion);
+        }
+
+        .hero-rocket img {
+            opacity: 0.2;
+            transform: translateY(0);
+            animation: rocketFloat 6s ease-in-out infinite, rocketLaunch 1s ease-out;
+        }
+
+        @keyframes rocketFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes rocketLaunch {
+            0% { transform: translateY(100px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 0.2; }
+        }
+
+        /* Sección de Segmentación */
+        .segmentation {
+            background-color: var(--blanco);
+            padding: 20px 0;
+            box-shadow: var(--sombra);
+            position: relative;
+            z-index: 3;
+        }
+
+        .segment-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            padding: 10px 0;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE 10+ */
+        }
+
+        .segment-slider::-webkit-scrollbar {
+            display: none; /* WebKit */
+        }
+
+        .segment-item {
+            flex: 0 0 auto;
+            margin-right: 15px;
+            padding: 10px 20px;
+            background-color: var(--gris-claro);
+            border-radius: 50px;
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: var(--transicion);
+            user-select: none;
+        }
+
+        .segment-item:hover {
+            background-color: var(--azul-claro);
+            color: var(--blanco);
+            transform: translateY(-2px);
+            box-shadow: var(--sombra);
+        }
+
+        .segment-item.active {
+            background-color: var(--azul-viretec);
+            color: var(--blanco);
+            box-shadow: var(--sombra);
+        }
+
+        /* Sección de Valor Segmentado */
+        .value-section {
+            padding: 80px 0;
+            background-color: var(--gris-claro);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--azul-profundo);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--azul-profundo), var(--azul-viretec));
+            border-radius: 3px;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--negro);
+            max-width: 800px;
+            margin: 20px auto 0;
+        }
+
+        .tabs-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .tabs-header {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--gris-medio);
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            padding-bottom: 5px;
+            scrollbar-width: none;
+        }
+
+        .tabs-header::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            margin: 0 5px;
+            font-family: 'Ubuntu', sans-serif;
+            font-weight: 500;
+            color: var(--negro);
+            background: transparent;
+            border: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            transition: var(--transicion);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            white-space: nowrap;
+            min-width: fit-content;
+        }
+
+        .tab-icon {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--azul-viretec);
+            opacity: 0.7;
+            transition: var(--transicion);
+        }
+
+        .tab-btn:hover {
+            color: var(--azul-viretec);
+        }
+
+        .tab-btn:hover .tab-icon {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
+        .tab-btn.active {
+            color: var(--azul-viretec);
+            border-bottom: 3px solid var(--azul-viretec);
+        }
+
+        .tab-btn.active .tab-icon {
+            opacity: 1;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s forwards;
+        }
+
+        .tab-content.active {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .tab-text {
+            flex: 1;
+            padding-right: 40px;
+        }
+
+        .tab-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+            box-shadow: var(--sombra);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .tab-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .tab-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .tab-text h3 {
+            font-size: 2rem;
+            color: var(--azul-profundo);
+            margin-bottom: 15px;
+        }
+
+        .tab-text h4 {
+            font-size: 1.3rem;
+            color: var(--azul-viretec);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .tab-text p {
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .tab-cta {
+            margin-top: 20px;
+        }
+
+        /* Sección separador con cohete */
+        .section-separator {
+            position: relative;
+            height: 60px;
+            overflow: hidden;
+        }
+
+        .section-separator .rocket-trail {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--azul-viretec), transparent);
+        }
+
+        .section-separator .mini-rocket {
+            position: absolute;
+            top: 20px;
+            left: calc(50% - 10px);
+            width: 20px;
+            height: 30px;
+            background-color: var(--azul-viretec);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            animation: miniRocketMove 2s linear infinite;
+        }
+
+        @keyframes miniRocketMove {
+            0% { top: 100%; opacity: 0; }
+            20% { opacity: 1; }
+            100% { top: -30px; opacity: 0; }
+        }
+
+        /* Sección Proyectos Emblemáticos */
+        .projects-section {
+            padding: 80px 0;
+            background-color: var(--blanco);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .project-card {
+            background-color: var(--gris-claro);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--sombra);
+            transition: var(--transicion);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s forwards;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .project-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .project-card:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 70%, rgba(0, 0, 0, 0.5));
+        }
+
+        .project-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--azul-profundo);
+        }
+
+        .project-desc {
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .project-impact {
+            margin: 15px 0;
+            font-weight: 600;
+            color: var(--azul-viretec);
+            display: flex;
+            align-items: center;
+        }
+
+        .project-impact span {
+            margin-right: 5px;
+            font-size: 1.2rem;
+        }
+
+        .project-cta {
+            text-align: right;
+            margin-top: auto;
+        }
+
+        .see-all-projects {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* Sección Cifras de Impacto */
+        .impact-section {
+            padding: 80px 0;
+            background-color: var(--azul-profundo);
+            color: var(--blanco);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .impact-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+        }
+
+        .impact-bg::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, var(--azul-claro) 0%, transparent 70%);
+            animation: pulse 15s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.2; }
+            50% { transform: scale(1.2); opacity: 0.1; }
+        }
+
+        .impact-title {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .impact-counters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .counter-item {
+            flex: 1;
+            min-width: 200px;
+            max-width: 250px;
+            margin-bottom: 30px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 30px 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .counter-item:hover {
+            transform: translateY(-10px);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .counter-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--azul-claro);
+            transition: transform 0.3s ease;
+        }
+
+        .counter-item:hover .counter-icon {
+            transform: scale(1.2);
+        }
+
+        .counter-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--azul-claro);
+            position: relative;
+            display: inline-block;
+        }
+
+        .counter-text {
+            font-size: 1rem;
+        }
+
+        /* Sección VNexus */
+        .vnexus-section {
+            padding: 80px 0;
+            background-color: var(--gris-claro);
+        }
+
+        .vnexus-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .vnexus-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .vnexus-diagram {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+
+        .vnexus-diagram img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: var(--sombra);
+        }
+
+        .vnexus-title {
+            font-size: 2.5rem;
+            color: var(--azul-profundo);
+            margin-bottom: 15px;
+        }
+
+        .vnexus-subtitle {
+            font-size: 1.3rem;
+            color: var(--azul-viretec);
+            margin-bottom: 20px;
+        }
+
+        .vnexus-components {
+            margin: 30px 0;
+        }
+
+        .component-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .component-item:hover {
+            transform: translateX(10px);
+        }
+
+        .component-icon {
+            flex: 0 0 50px;
+            height: 50px;
+            background-color: var(--azul-viretec);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--blanco);
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .component-item:hover .component-icon {
+            transform: rotate(10deg);
+        }
+
+        .component-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .vnexus-cta {
+            margin-top: 30px;
+        }
+
+        /* Sección Testimoniales */
+        .testimonials-section {
+            padding: 80px 0;
+            background-color: var(--blanco);
+        }
+
+        .testimonials-slider {
+            margin-top: 50px;
+            position: relative;
+        }
+
+        .testimonial-card {
+            background-color: var(--gris-claro);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 0 15px;
+            box-shadow: var(--sombra);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-content {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .testimonial-quote {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+            border: 3px solid var(--azul-viretec);
+        }
+
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .quote-icon {
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: var(--azul-claro);
+            opacity: 0.3;
+            font-size: 2rem;
+        }
+
+        /* Sección Final CTA */
+        .final-cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--azul-profundo) 0%, var(--azul-viretec) 100%);
+            color: var(--blanco);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.2;
+        }
+
+        .final-cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .final-cta-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .final-cta-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Componentes Flotantes */
+        .chatbot {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+        }
+
+        .chatbot-trigger {
+            width: 60px;
+            height: 60px;
+            background-color: var(--azul-viretec);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--blanco);
+            font-size: 1.5rem;
+            box-shadow: var(--sombra);
+            cursor: pointer;
+            transition: var(--transicion);
+            position: relative;
+        }
+
+        .chatbot-trigger::after {
+            content: "Asistente virtual";
+            position: absolute;
+            right: 70px;
+            background-color: var(--azul-profundo);
+            color: var(--blanco);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .chatbot-trigger:hover {
+            transform: scale(1.1);
+        }
+
+        .chatbot-trigger:hover::after {
+            opacity: 1;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--azul-profundo);
+            color: var(--blanco);
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--azul-claro);
+            position: relative;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--azul-claro);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-link {
+            margin-bottom: 10px;
+        }
+
+        .footer-link a {
+            color: var(--gris-claro);
+            transition: var(--transicion);
+            display: inline-block;
+        }
+
+        .footer-link a:hover {
+            color: var(--azul-claro);
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--blanco);
+            font-size: 1.2rem;
+            transition: var(--transicion);
+        }
+
+        .social-link:hover {
+            background-color: var(--azul-claro);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mejoras de accesibilidad */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        /* Scroll to top */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 100px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--azul-viretec);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--blanco);
+            font-size: 1.2rem;
+            box-shadow: var(--sombra);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 99;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .tab-content.active {
+                flex-direction: column;
+            }
+
+            .tab-text {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+
+            .final-cta-title {
+                font-size: 2.5rem;
+            }
+
+            .impact-title {
+                font-size: 2rem;
+            }
+
+            .counter-number {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--blanco);
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                flex-direction: column;
+                padding: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+
+            .nav-menu.active {
+                display: flex;
+                max-height: 100vh;
+                overflow-y: auto;
+                padding: 20px 0;
+            }
+
+            .nav-item {
+                margin: 10px 20px;
+                text-align: center;
+            }
+
+            .nav-cta {
+                margin: 15px 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .tabs-header {
+                overflow-x: auto;
+                justify-content: flex-start;
+                padding-bottom: 10px;
+            }
+
+            .tab-btn {
+                flex: 0 0 auto;
+                white-space: nowrap;
+            }
+
+            .counter-item {
+                min-width: 150px;
+            }
+
+            .segment-slider {
+                position: relative;
+                padding-bottom: 25px;
+            }
+            
+            .segment-slider:after {
+                content: "";
+                position: absolute;
+                bottom: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 50px;
+                height: 4px;
+                background-color: var(--gris-medio);
+                border-radius: 2px;
+            }
+
+            .chatbot {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .chatbot-trigger {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            .scroll-top {
+                right: 20px;
+                bottom: 20px;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .vnexus-diagram {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .final-cta-title {
+                font-size: 2rem;
+            }
+
+            .final-cta-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .footer-column {
+                flex: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header y Navegación -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo-container">
+                <img src="https://viretec.mx/wp-content/uploads/2016/07/viretec.png" alt="Viretec" class="logo">
+            </a>
+            <nav aria-label="Navegación principal">
+                <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false" aria-controls="navMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu" role="menubar">
+                    <li class="nav-item" role="none"><a href="#quienes-somos" class="nav-link" role="menuitem">Quiénes Somos</a></li>
+                    <li class="nav-item" role="none"><a href="#proyectos" class="nav-link" role="menuitem">Proyectos</a></li>
+                    <li class="nav-item" role="none"><a href="#servicios" class="nav-link" role="menuitem">Servicios</a></li>
+                    <li class="nav-item" role="none"><a href="#impacto" class="nav-link" role="menuitem">Impacto</a></li>
+                    <li class="nav-item" role="none"><a href="#productos" class="nav-link" role="menuitem">Productos</a></li>
+                    <li class="nav-item" role="none"><a href="#contacto" class="nav-link" role="menuitem">Contacto</a></li>
+                    <li class="nav-cta" role="none"><a href="#colaborar" class="btn btn-primary" role="menuitem">Colaboremos</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-rocket">
+            <!-- Animación del cohete -->
+            <img src="https://viretec.mx/wp-content/uploads/2020/08/Cohete-1024x614.png" alt="Cohete Viretec">
+        </div>
+        <div class="container hero-content">
+            <h1>Innovamos para mejorar el mundo y somos felices haciéndolo</h1>
+            <p>Impulsamos tecnologías que transforman realidades</p>
+            <div class="hero-cta">
+                <a href="#colaborar" class="btn btn-primary">Descubre cómo colaborar</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Segmentación -->
+    <section class="segmentation" id="segmentacion">
+        <div class="container">
+            <div class="segment-slider" role="tablist" aria-label="Perfiles de usuario">
+                <div class="segment-item active" role="tab" aria-selected="true" tabindex="0" data-segment="1">Soy inversionista buscando proyectos de alto impacto</div>
+                <div class="segment-item" role="tab" aria-selected="false" tabindex="0" data-segment="2">Represento un centro de investigación o IES</div>
+                <div class="segment-item" role="tab" aria-selected="false" tabindex="0" data-segment="3">Dirijo un fondo de capital de riesgo</div>
+                <div class="segment-item" role="tab" aria-selected="false" tabindex="0" data-segment="4">Busco innovación para mi empresa</div>
+                <div class="segment-item" role="tab" aria-selected="false" tabindex="0" data-segment="5">Soy emprendedor con tecnología disruptiva</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Valor Segmentado -->
+    <section class="value-section" id="valor">
+        <div class="container">
+            <div class="section-header">
+                <h2>Soluciones personalizadas para cada perfil</h2>
+                <p>Conectando capital, conocimiento e innovación para generar impacto real</p>
+            </div>
+
+            <div class="tabs-container">
+                <div class="tabs-header" role="tablist">
+                    <button class="tab-btn active" id="tab1-btn" data-tab="tab1" role="tab" aria-selected="true" aria-controls="tab1">
+                        <span class="tab-icon"><i class="fas fa-chart-line"></i></span>
+                        <span class="tab-label">Capital de Impacto</span>
+                    </button>
+                    <button class="tab-btn" id="tab2-btn" data-tab="tab2" role="tab" aria-selected="false" aria-controls="tab2">
+                        <span class="tab-icon"><i class="fas fa-flask"></i></span>
+                        <span class="tab-label">Centros de Investigación</span>
+                    </button>
+                    <button class="tab-btn" id="tab3-btn" data-tab="tab3" role="tab" aria-selected="false" aria-controls="tab3">
+                        <span class="tab-icon"><i class="fas fa-wallet"></i></span>
+                        <span class="tab-label">Fondos de Capital</span>
+                    </button>
+                    <button class="tab-btn" id="tab4-btn" data-tab="tab4" role="tab" aria-selected="false" aria-controls="tab4">
+                        <span class="tab-icon"><i class="fas fa-industry"></i></span>
+                        <span class="tab-label">Industria</span>
+                    </button>
+                    <button class="tab-btn" id="tab5-btn" data-tab="tab5" role="tab" aria-selected="false" aria-controls="tab5">
+                        <span class="tab-icon"><i class="fas fa-rocket"></i></span>
+                        <span class="tab-label">Emprendedores</span>
+                    </button>
+                </div>
+
+                <div class="tab-content active" id="tab1" role="tabpanel" aria-labelledby="tab1-btn">
+                    <div class="tab-text">
+                        <h3>Proyectos transformadores con métricas verificables</h3>
+                        <h4>Pipeline cualificado de innovaciones de triple impacto</h4>
+                        <p>Accede a un portafolio seleccionado de proyectos con alto potencial de transformación y métricas de impacto verificables. Nuestro proceso de cualificación garantiza inversiones alineadas con objetivos de triple impacto.</p>
+                        <div class="tab-cta">
+                            <a href="#" class="btn btn-primary">Accede al Reporte de Oportunidades 2025</a>
+                        </div>
+                    </div>
+                    <div class="tab-image">
+                        <img src="/api/placeholder/500/300" alt="Gráficos de Impacto">
+                    </div>
+                </div>
+
+                <div class="tab-content" id="tab2" role="tabpanel" aria-labelledby="tab2-btn">
+                    <div class="tab-text">
+                        <h3>Transferencia tecnológica efectiva</h3>
+                        <h4>Del laboratorio al mercado con metodología probada</h4>
+                        <p>Potencia la comercialización de tecnologías mediante nuestra metodología validada. Conectamos investigación con mercado, maximizando el valor de la propiedad intelectual y acelerando el ciclo de implementación.</p>
+                        <div class="tab-cta">
+                            <a href="#" class="btn btn-primary">Descarga nuestra Guía de Transferencia</a>
+                        </div>
+                    </div>
+                    <div class="tab-image">
+                        <img src="/api/placeholder/500/300" alt="Proceso de Transferencia">
+                    </div>
+                </div>
+
+                <div class="tab-content" id="tab3" role="tabpanel" aria-labelledby="tab3-btn">
+                    <div class="tab-text">
+                        <h3>Deal flow cualificado en tecnologías emergentes</h3>
+                        <h4>Acceso prioritario a innovaciones validadas</h4>
+                        <p>Obtén acceso privilegiado a tecnologías disruptivas en etapas tempranas, con validación técnica y de mercado. Nuestro riguroso proceso de filtrado te permite enfocarte en oportunidades con mayor potencial y reducir riesgos.</p>
+                        <div class="tab-cta">
+                            <a href="#" class="btn btn-primary">Solicita acceso al Deal Flow Report</a>
+                        </div>
+                    </div>
+                    <div class="tab-image">
+                        <img src="/api/placeholder/500/300" alt="Verticales Tecnológicas">
+                    </div>
+                </div>
+
+                <div class="tab-content" id="tab4" role="tabpanel" aria-labelledby="tab4-btn">
+                    <div class="tab-text">
+                        <h3>Innovación abierta estratégica</h3>
+                        <h4>Soluciones validadas para desafíos industriales</h4>
+                        <p>Implementa programas de innovación abierta con resultados medibles. Conectamos tu empresa con tecnologías disruptivas y talento especializado para resolver desafíos específicos y mejorar tu posición competitiva.</p>
+                        <div class="tab-cta">
+                            <a href="#" class="btn btn-primary">Obtén tu Benchmark de Innovación</a>
+                        </div>
+                    </div>
+                    <div class="tab-image">
+                        <img src="/api/placeholder/500/300" alt="Innovación Industrial">
+                    </div>
+                </div>
+
+                <div class="tab-content" id="tab5" role="tabpanel" aria-labelledby="tab5-btn">
+                    <div class="tab-text">
+                        <h3>Potencia tu innovación científica</h3>
+                        <h4>Recursos, mentoría y conexiones estratégicas</h4>
+                        <p>Transforma tu tecnología en soluciones de mercado mediante nuestra metodología especializada. Te acompañamos en la validación, prototipación, financiamiento y conexión con primeros clientes para maximizar tu impacto.</p>
+                        <div class="tab-cta">
+                            <a href="#" class="btn btn-primary">Descarga el Toolkit de Comercialización</a>
+                        </div>
+                    </div>
+                    <div class="tab-image">
+                        <img src="/api/placeholder/500/300" alt="Ruta de Despegue">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Separador con mini-cohete -->
+    <div class="section-separator">
+        <div class="rocket-trail"></div>
+        <div class="mini-rocket" aria-hidden="true"></div>
+    </div>
+
+    <!-- Sección Proyectos Emblemáticos -->
+    <section class="projects-section" id="proyectos">
+        <div class="container">
+            <div class="section-header">
+                <h2>Proyectos que transforman realidades</h2>
+                <p>Conoce algunas de nuestras innovaciones propias</p>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('/api/placeholder/400/200');"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">LifeClip</h3>
+                        <p class="project-desc">Tecnología que resuelve la principal causa de muerte obstétrica del mundo</p>
+                        <div class="project-impact">
+                            <span>+500,000</span> potenciales beneficiarios
+                        </div>
+                        <div class="project-cta">
+                            <a href="#" class="btn btn-outline">Conoce el impacto</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('/api/placeholder/400/200');"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">CKcero</h3>
+                        <p class="project-desc">Revolucionando la construcción sostenible</p>
+                        <div class="project-impact">
+                            <span>-8,500</span> toneladas CO2 anuales
+                        </div>
+                        <div class="project-cta">
+                            <a href="#" class="btn btn-outline">Explora la tecnología</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image" style="background-image: url('/api/placeholder/400/200');"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">CAPTICA</h3>
+                        <p class="project-desc">Energía renovable accesible para comunidades</p>
+                        <div class="project-impact">
+                            <span>+2.8M</span> kWh generados
+                        </div>
+                        <div class="project-cta">
+                            <a href="#" class="btn btn-outline">Ver resultados</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="see-all-projects">
+                <a href="#" class="btn btn-secondary">Explorar todos los proyectos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Cifras de Impacto -->
+    <section class="impact-section" id="impacto">
+        <div class="impact-bg" aria-hidden="true"></div>
+        <div class="container">
+            <h2 class="impact-title">Nuestro impacto en cifras</h2>
+            
+            <div class="impact-counters">
+                <div class="counter-item">
+                    <div class="counter-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="counter-number" data-target="50" data-suffix="+">50+</div>
+                    <div class="counter-text">Proyectos implementados</div>
+                </div>
+                
+                <div class="counter-item">
+                    <div class="counter-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="counter-number" data-target="2500000" data-suffix="+">2.5M+</div>
+                    <div class="counter-text">Personas beneficiadas</div>
+                </div>
+                
+                <div class="counter-item">
+                    <div class="counter-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="counter-number" data-target="35" data-suffix="M+">$35M+</div>
+                    <div class="counter-text">Inversión catalizada</div>
+                </div>
+                
+                <div class="counter-item">
+                    <div class="counter-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="counter-number" data-target="15000" data-suffix="+">15K+</div>
+                    <div class="counter-text">Toneladas CO2 reducidas anualmente</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección VNexus -->
+    <section class="vnexus-section" id="vnexus">
+        <div class="container">
+            <div class="vnexus-container">
+                <div class="vnexus-text">
+                    <h2 class="vnexus-title">Conoce VNexus</h2>
+                    <h3 class="vnexus-subtitle">Nuestro ecosistema de innovación</h3>
+                    <p>Conectamos capital, Innovadores, industria y emprendedores para impulsar tecnologías que transforman realidades. VNexus es nuestra plataforma integral para identificar, desarrollar e implementar innovaciones de alto impacto.</p>
+                    
+                    <div class="vnexus-components">
+                        <div class="component-item">
+                            <div class="component-icon">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                            <div class="component-text">
+                                <h4>LAB</h4>
+                                <p>Validación y desarrollo tecnológico</p>
+                            </div>
+                        </div>
+                        
+                        <div class="component-item">
+                            <div class="component-icon">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <div class="component-text">
+                                <h4>SHOWCASE</h4>
+                                <p>Exhibición de innovaciones validadas</p>
+                            </div>
+                        </div>
+                        
+                        <div class="component-item">
+                            <div class="component-icon">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                            <div class="component-text">
+                                <h4>CAPITAL</h4>
+                                <p>Acceso a financiamiento estratégico</p>
+                            </div>
+                        </div>
+                        
+                        <div class="component-item">
+                            <div class="component-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <div class="component-text">
+                                <h4>BUILDING</h4>
+                                <p>Infraestructura para implementación</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="vnexus-cta">
+                        <a href="#" class="btn btn-secondary">Descubre cómo integrarte a VNexus</a>
+                    </div>
+                </div>
+                
+                <div class="vnexus-diagram">
+                    <img src="/api/placeholder/500/400" alt="VNexus Ecosystem">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Testimoniales -->
+    <section class="testimonials-section" id="testimonios">
+        <div class="container">
+            <div class="section-header">
+                <h2>Lo que dicen nuestros aliados</h2>
+                <p>Experiencias de quienes ya son parte del ecosistema VNexus</p>
+            </div>
+            
+            <div class="testimonials-slider">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <div class="quote-icon" aria-hidden="true">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p class="testimonial-quote">Viretec nos permitió identificar y validar tecnologías con alto potencial de impacto, optimizando nuestro proceso de due diligence y maximizando el retorno social de nuestras inversiones.</p>
+                        <div class="testimonial-author">
+                            <div class="author-image">
+                                <img src="/api/placeholder/60/60" alt="Carlos Ramírez">
+                            </div>
+                            <div class="author-info">
+                                <h4>Carlos Ramírez</h4>
+                                <p>Director de Inversiones, Fondo de Impacto Global</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Aquí irían más testimoniales en un slider real -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Final CTA -->
+    <section class="final-cta" id="colaborar">
+        <div class="cta-stars" aria-hidden="true">
+            <!-- Animación sutil de estrellas/partículas -->
+        </div>
+        <div class="container final-cta-content">
+            <h2 class="final-cta-title">¿Listo para impulsar innovación que trasciende?</h2>
+            <p class="final-cta-subtitle">Da el primer paso hacia la colaboración estratégica</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">Agenda una sesión estratégica</a>
+                <a href="#" class="btn btn-outline" style="color: white; border-color: white;">Explora nuestros recursos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <img src="https://viretec.mx/wp-content/uploads/2016/07/viretec.png" alt="Viretec" style="height: 50px; margin-bottom: 20px;">
+                    <p>Innovamos para mejorar el mundo y somos felices haciéndolo. Impulsamos tecnologías que transforman realidades y generan triple impacto.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Navegación</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#">Inicio</a></li>
+                        <li class="footer-link"><a href="#quienes-somos">Quiénes Somos</a></li>
+                        <li class="footer-link"><a href="#proyectos">Proyectos</a></li>
+                        <li class="footer-link"><a href="#servicios">Servicios</a></li>
+                        <li class="footer-link"><a href="#impacto">Impacto</a></li>
+                        <li class="footer-link"><a href="#blog">Blog</a></li>
+                        <li class="footer-link"><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Servicios</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#">Desarrollo de bancos de ideas</a></li>
+                        <li class="footer-link"><a href="#">Evaluación de proyectos</a></li>
+                        <li class="footer-link"><a href="#">Valuación de tecnologías</a></li>
+                        <li class="footer-link"><a href="#">Validación de casos de negocio</a></li>
+                        <li class="footer-link"><a href="#">Proyectos de ingeniería</a></li>
+                        <li class="footer-link"><a href="#">Prototipación</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><i class="fas fa-map-marker-alt"></i> Aguascalientes, México</li>
+                        <li class="footer-link"><i class="fas fa-phone"></i> +52 (449) 123-4567</li>
+                        <li class="footer-link"><i class="fas fa-envelope"></i> contacto@viretec.mx</li>
+                    </ul>
+                    <a href="#contacto" class="btn btn-primary" style="margin-top: 20px;">Contactar ahora</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Viretec Gestión y Desarrollo S.A. de C.V. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Flotante -->
+    <div class="chatbot">
+        <div class="chatbot-trigger" aria-label="Abrir chat de asistencia">
+            <i class="fas fa-comment-dots"></i>
+        </div>
+    </div>
+
+    <!-- Botón scroll to top -->
+    <button class="scroll-top" id="scrollTop" aria-label="Volver arriba">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts mejorados-->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Navegación responsiva
+            initMobileNav();
+            
+            // Inicializar tabs
+            initTabs();
+            
+            // Segmentación
+            initSegmentation();
+            
+            // Inicializar contadores con Intersection Observer
+            initCounters();
+            
+            // Inicializar chatbot
+            initChatbot();
+            
+            // Inicializar botón scroll to top
+            initScrollToTop();
+            
+            // Animación del header al hacer scroll
+            initHeaderScroll();
+        });
+
+        function initMobileNav() {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('navMenu');
+            
+            if (!hamburger || !navMenu) return;
+            
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                
+                // Accesibilidad
+                const isExpanded = navMenu.classList.contains('active');
+                hamburger.setAttribute('aria-expanded', isExpanded);
+            });
+            
+            // Cerrar menú al hacer clic en un enlace
+            navMenu.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                });
+            });
+
+            // Navegación con teclado
+            navMenu.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        link.click();
+                    }
+                });
+            });
+        }
+
+        function initTabs() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            if (!tabBtns.length) return;
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const tabId = btn.getAttribute('data-tab');
+                    
+                    // Actualizar estados de los botones
+                    tabBtns.forEach(b => {
+                        b.classList.remove('active');
+                        b.setAttribute('aria-selected', 'false');
+                    });
+                    
+                    btn.classList.add('active');
+                    btn.setAttribute('aria-selected', 'true');
+                    
+                    // Actualizar contenido de los tabs
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    
+                    const activeTab = document.getElementById(tabId);
+                    if (activeTab) {
+                        activeTab.classList.add('active');
+                    }
+                });
+                
+                // Navegación con teclado
+                btn.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        btn.click();
+                    }
+                });
+            });
+        }
+
+        function initSegmentation() {
+            const segmentItems = document.querySelectorAll('.segment-item');
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            
+            if (!segmentItems.length) return;
+            
+            segmentItems.forEach((item, index) => {
+                item.addEventListener('click', () => {
+                    // Actualizar estado de los items
+                    segmentItems.forEach(i => {
+                        i.classList.remove('active');
+                        i.setAttribute('aria-selected', 'false');
+                    });
+                    
+                    item.classList.add('active');
+                    item.setAttribute('aria-selected', 'true');
+                    
+                    // Activar tab correspondiente
+                    if (tabBtns[index]) {
+                        tabBtns[index].click();
+                    }
+                    
+                    // Scroll suave hasta la sección
+                    const valueSection = document.querySelector('.value-section');
+                    if (valueSection) {
+                        valueSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+                
+                // Navegación con teclado
+                item.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        item.click();
+                    }
+                    
+                    // Navegación horizontal con teclas de flecha
+                    if (e.key === 'ArrowRight') {
+                        e.preventDefault();
+                        const nextItem = segmentItems[index + 1] || segmentItems[0];
+                        nextItem.focus();
+                    }
+                    if (e.key === 'ArrowLeft') {
+                        e.preventDefault();
+                        const prevItem = segmentItems[index - 1] || segmentItems[segmentItems.length - 1];
+                        prevItem.focus();
+                    }
+                });
+            });
+        }
+
+        function initCounters() {
+            const counters = document.querySelectorAll('.counter-number');
+            
+            if (!counters.length) return;
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.5
+            });
+            
+            counters.forEach(counter => {
+                observer.observe(counter);
+            });
+        }
+
+        function animateCounter(counterElement) {
+            const target = parseInt(counterElement.getAttribute('data-target'));
+            const suffix = counterElement.getAttribute('data-suffix') || '+';
+            let count = 0;
+            const duration = 2000; // 2 segundos
+            const frameRate = 30; // frames por segundo
+            const step = target / (duration / 1000 * frameRate);
+            
+            let format = (num) => {
+                if (num >= 1000000) {
+                    return (num / 1000000).toFixed(1) + 'M';
+                } else if (num >= 1000) {
+                    return (num / 1000).toFixed(0) + 'K';
+                } else {
+                    return num.toString();
+                }
+            };
+            
+            const updateCount = () => {
+                count += step;
+                if (count < target) {
+                    counterElement.textContent = format(Math.floor(count)) + suffix;
+                    requestAnimationFrame(updateCount);
+                } else {
+                    counterElement.textContent = format(target) + suffix;
+                }
+            };
+            
+            requestAnimationFrame(updateCount);
+        }
+
+        function initChatbot() {
+            const chatbotTrigger = document.querySelector('.chatbot-trigger');
+            
+            if (!chatbotTrigger) return;
+            
+            chatbotTrigger.addEventListener('click', () => {
+                // Aquí iría la lógica para abrir el chatbot
+                alert('El chatbot se abrirá en una versión futura.');
+            });
+        }
+
+        function initScrollToTop() {
+            const scrollBtn = document.getElementById('scrollTop');
+            
+            if (!scrollBtn) return;
+            
+            // Mostrar/ocultar botón al hacer scroll
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    scrollBtn.classList.add('visible');
+                } else {
+                    scrollBtn.classList.remove('visible');
+                }
+            });
+            
+            // Funcionalidad de scroll to top
+            scrollBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+        function initHeaderScroll() {
+            const header = document.getElementById('header');
+            
+            if (!header) return;
+            
+            let lastScrollTop = 0;
+            
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                if (scrollTop > 100) {
+                    header.style.padding = '5px 0';
+                    header.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.1)';
+                } else {
+                    header.style.padding = '';
+                    header.style.boxShadow = '';
+                }
+                
+                lastScrollTop = scrollTop;
+            });
+        }
+    </script>
+</body>
+</html>
